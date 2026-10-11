@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+
+  --color-chalk: #f2f4f7;
+  --color-paper: #ffffff;
+  --color-ink: #101828;
+  --color-ink-soft: #475467;
+  --color-ink-faint: #667085;
+  --color-line: #e3e7ee;
+  --color-cobalt: #3447ff;
+  --color-cobalt-dark: #2535d6;
+  --color-cobalt-wash: #eceeff;
+  --color-amber: #b45309;
+  --color-amber-wash: #fff4dc;
+  --color-danger: #c0262d;
+  --color-danger-wash: #fdeceb;
+  --color-ok: #067647;
+  --color-ok-wash: #e4f6ec;
+}
+
+html { color-scheme: light; }
+
+body {
+  margin: 0;
+  background: var(--color-chalk);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-cobalt);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* The one orchestrated moment: a freshly created link slides into the top of the list */
+@keyframes arrive {
+  from { opacity: 0; transform: translateY(-8px); background: var(--color-cobalt-wash); }
+  to   { opacity: 1; transform: none; }
+}
+.arrive { animation: arrive 480ms cubic-bezier(.2,.8,.2,1) both; }
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+.pop { animation: pop 160ms ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .arrive, .pop { animation: none; }
+  * { scroll-behavior: auto !important; }
+}
